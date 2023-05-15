@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 def multiple_returns(sentence):
-    first = list(sentence)
-    if sentence == ' ':
-        first[0] = None
-    return(len(sentence), ''.join(first[:1]))
+    if len(sentence) == 0:
+        first = None
+    else:
+        first = sentence[0]
+    return(len(sentence), first)
