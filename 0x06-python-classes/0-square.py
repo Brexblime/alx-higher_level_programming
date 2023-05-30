@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 """
-class name
+class name.
 """
+
+
 class Square:
     """
-    creating an empty class called Square
+    creating an empty class called Square.
     """
+
+
     pass
