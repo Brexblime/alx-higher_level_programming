@@ -19,7 +19,7 @@ class Rectangle:
         """
         getter method to retrieve the width of the rectangle.
         """
-        return self.__width
+        return (self.__width)
 
     @width.setter
     def width(self, value):
@@ -37,7 +37,7 @@ class Rectangle:
         """
         getter method to retrieve the height of the rectangle.
         """
-        return self.__height
+        return (self.__height)
 
     @height.setter
     def height(self, value):
@@ -52,12 +52,12 @@ class Rectangle:
 
 
     def area(self):
-        """Returns: Rectangle area"""
-        return self.__width * self.__height
+        """returns Rectangle area"""
+        return (self.__width * self.__height)
 
     def perimeter(self):
-        """Returns: Rectangle perimeter"""
+        """returns Rectangle perimeter"""
         if self.__width == 0 or self.__height == 0:
-            return 0
+            return (0)
         else:
-            return 2 * (self.__width + self.__height)
+            return (2 * (self.__width + self.__height))
