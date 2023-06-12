@@ -1,29 +1,16 @@
 #!/usr/bin/python3
-"""Module for Rectangle class."""
+"""Defines a Square class that inherits from Rectangle."""
 
 
 class BaseGeometry:
-    """BaseGeometry class."""
+    """Defines the BaseGeometry class."""
 
     def area(self):
-        """Calculates the area.
-
-        Raises:
-            Exception: If area() is not implemented.
-        """
+        """Raises an exception."""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """Validates the value.
-
-        Args:
-            name (str): The name of the value.
-            value (int): The value to be validated.
-
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than or equal to 0.
-        """
+        """Validates the value."""
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
@@ -31,15 +18,10 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
-    """Rectangle class."""
+    """Defines the Rectangle class."""
 
     def __init__(self, width, height):
-        """Initializes a Rectangle instance.
-
-        Args:
-            width (int): The width of the rectangle.
-            height (int): The height of the rectangle.
-        """
+        """Initializes a Rectangle instance."""
         self.__width = 0
         self.__height = 0
         self.integer_validator("width", width)
@@ -47,33 +29,29 @@ class Rectangle(BaseGeometry):
         self.__width = width
         self.__height = height
 
-    def area(self):
-        """Calculates the area of the rectangle.
-
-        Returns:
-            int: The area of the rectangle.
-        """
-        return self.__width * self.__height
-
     def __str__(self):
-        """Returns a string representation of the rectangle.
+        """Returns a string representation of the Rectangle."""
+        return f"[Rectangle] {self.__width}/{self.__height}"
 
-        Returns:
-            str: The rectangle description.
-        """
-        return (f"[Rectangle] {self.__width}/{self.__height}")
+    def area(self):
+        """Computes the area of the Rectangle."""
+        return self.__width * self.__height
 
 
 class Square(Rectangle):
-    """Square class."""
+    """Defines the Square class."""
 
     def __init__(self, size):
         """Initializes a Square instance."""
         self.__size = 0
         self.integer_validator("size", size)
-        self.__size = size
         super().__init__(size, size)
+        self.__size = size
 
     def __str__(self):
-        """Returns a string representation of the square."""
-        return (f"[Rectangle] {self.__size}/{self.__size}")
+        """Returns a string representation of the Square."""
+        return super().__str__()
+
+    def area(self):
+        """Computes the area of the Square."""
+        return super().area()
