@@ -85,4 +85,3 @@ class Square(Rectangle):
             str: The square description.
         """
         return f"[Square] {self.__size}/{self.__size}"
-
