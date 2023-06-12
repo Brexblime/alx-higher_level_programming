@@ -9,13 +9,16 @@
 class BaseGeometry:
     """naming it BaseGeometry."""
 
+
     def area(self):
         """defining area."""
+
 
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """validates value."""
+
 
         if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
@@ -24,6 +27,8 @@ class BaseGeometry:
 
 class Rectangle(BaseGeometry):
     """defining Rectangle."""
+
+
     def __init__(self, width, height):
         self.__width = 0
         self.__height = 0
