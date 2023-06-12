@@ -61,7 +61,7 @@ class Rectangle(BaseGeometry):
         Returns:
             str: The rectangle description.
         """
-        return f"[Rectangle] {self.__width}/{self.__height}"
+        return (f"[Rectangle] {self.__width}/{self.__height}")
 
 
 class Square(Rectangle):
@@ -76,4 +76,4 @@ class Square(Rectangle):
 
     def __str__(self):
         """Returns a string representation of the square."""
-        return f"[Square] {self.__size}/{self.__size}"
+        return (f"[Rectangle] {self.__size}/{self.__size}")
