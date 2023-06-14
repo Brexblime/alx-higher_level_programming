@@ -9,8 +9,6 @@ def class_to_json(obj):
 
     if hasattr(obj, '__dict__'):
         for key, value in obj.__dict__.items():
-            # Check if the attribute value is serializable
             if isinstance(value, (list, dict, str, int, bool)):
                 json_dict[key] = value
-
     return (json_dict)
