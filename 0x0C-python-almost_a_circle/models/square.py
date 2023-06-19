@@ -1,57 +1,108 @@
 #!/usr/bin/python3
-"""
-module contains the Square class.
-"""
+""" Module containing the Rectangle class """
 
 
-from models.rectangle import Rectangle
+from models.base import Base
 
 
-class Square(Rectangle):
-    """
-    Square class, inheriting from Rectangle.
-    """
-
-    def __init__(self, size, x=0, y=0, id=None):
-        """
-        initializes a Square instance.
-        """
-        super().__init__(size, size, x, y, id)
+class Rectangle(Base):
+    """ Rectangle class that inherits from Base """
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """ Initializes an instance of the Rectangle class """
+        super().__init__(id)
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     @property
-    def size(self):
-        """getter method for size attribute."""
-        return (self.width)
+    def width(self):
+        """ Getter method for width """
+        return (self.__width)
 
-    @size.setter
-    def size(self, value):
-        """setter method for size attribute."""
-        self.width = value
-        self.height = value
+    @width.setter
+    def width(self, value):
+        """ Setter method for width """
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
+
+    @property
+    def height(self):
+        """ Getter method for height """
+        return (self.__height)
+
+    @height.setter
+    def height(self, value):
+        """ Setter method for height """
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        elif value <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
+
+    @property
+    def x(self):
+        """ Getter method for x """
+        return (self.__x)
+
+    @x.setter
+    def x(self, value):
+        """ Setter method for x """
+        if not isinstance(value, int):
+            raise TypeError("x must be an integer")
+        elif value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
+
+    @property
+    def y(self):
+        """ Getter method for y """
+        return (self.__y)
+
+    @y.setter
+    def y(self, value):
+        """ Setter method for y """
+        if not isinstance(value, int):
+            raise TypeError("y must be an integer")
+        elif value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
+
+    def area(self):
+        """ Calculates and returns the area of the Rectangle """
+        return (self.__width * self.__height)
+
+    def display(self):
+        """ Prints the Rectangle instance with the character # """
+        for _ in range(self.__y):
+            print()
+        for _ in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
+
+    def __str__(self):
+        """ Returns a string representation of the Rectangle """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height))
 
     def update(self, *args, **kwargs):
-        """assigns attributes."""
-        if args and len(args) > 0:
-            attrs = ["id", "size", "x", "y"]
-            for i, value in enumerate(args):
-                if i < len(attrs):
-                    setattr(self, attrs[i], value)
+        """ Updates the attributes of the Rectangle """
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for attr, value in zip(attrs, args):
+                setattr(self, attr, value)
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-    def __str__(self):
-        """
-        returns a string representation of the Square instance.
-        """
-        return ("[Square] ({}) {}/{} - {}".format(
-            self.id, self.x, self.y, self.width))
-
     def to_dictionary(self):
-        """returns the dictionary representation of a Square."""
+        """ Returns the dictionary representation of the Rectangle """
         return ({
             "id": self.id,
-            "size": self.size,
-            "x": self.x,
-            "y": self.y
-            })
+            "width": self.__width,
+            "height": self.__height,
+            "x": self.__x,
+            "y": self.__y
+        })
